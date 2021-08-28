@@ -20,7 +20,7 @@
 
         </div>
         <div class="col3">
-            <a href="/home"><i class="fas fa-home" ></i>Home</a>
+            <a href="/home"><i class="fas fa-home"></i>Home</a>
         </div>
         <div class="col3">
             <a href="account"><i class="fas fa-user"></i> Profile</a>
@@ -29,12 +29,16 @@
 </div>
 </div>
 <div class="results">
-    <div class="row">
-    <div class="col2">
+    
         <h1 style="text-align: center;">Results</h1>
         
 
+
         <form method="POST" action="/home/results/submit" name="form1">
+            <div class="rollno">
+                <input type="text" value="<%= data.Rollno %>" placeholder="Roll_no" required name="rolln">
+                <input type="text" placeholder="Year-sem" required name="yearse" value="<%= data.YS %>">
+            </div>
             <table>
                 <tr>
                     <th>Sub_name</th>
@@ -42,29 +46,24 @@
                     <th>Ext_marks</th>
             
                 </tr>
-                <tr id="jj">
+                
                     
-                    
-                    <td id="row0"></td>
-                    <td id="row1"></td>
-                    <td id="row2"></td>
-                </tr>
+                    <% data.d.forEach((val)=>{ %>
+                        <tr id="jj">   
+                    <td id="row0"><input type="text" style="width: 250px;" value="<%= val.sub_name %>" name="subname" readonly></td>
+                    <td id="row1"><input type="text" name="intmarks" required></td>
+                    <td id="row2"><input type="text" name="extmarks" required></td>
+                    </tr>
+                    <% }) %>
+                
+                
             </table>
-            <div class="rollno">
-                <input type="text" placeholder="Roll_no" required name="rollno">
-                <input type="text" placeholder="Year-sem" required name="yearsem">
-                <button type="submit" formmethod="POST" formaction="/home/results">Get Subjects</button>
-            </div>
-
+            
         <div class="push">
             <button type="submit">POST</button>
         <div>
     </form>
-    </div>
-      
-</div>
 </div>   
-
 </div>
 </body>
 </html>

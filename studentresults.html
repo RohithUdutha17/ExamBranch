@@ -28,12 +28,37 @@
     </div>
 </div>
 </div>
+<% if (data.length==0){ %>
+    <div class="search">
+        <form method="POST" action="/studentresults">
+        <div class="row">
+            <input type="text" placeholder="Hall Ticket" name="htno" required>
+        <select name="yearsem" required>
+            <option hidden>select year-sem</option>
+            <option value="1-1">1-1</option>
+            <option value="1-2">1-2</option>
+            <option value="2-1">2-1</option>
+            <option value="2-2">2-2</option>
+            <option value="3-1">3-1</option>
+            <option value="3-2">3-2</option>
+            <option value="4-1">4-1</option>
+            <option value="4-2">4-2</option>
+        </select>
+        <button type="submit">submit</button>
+    
+        </div>
+    </form>
+    </div>
+    
+    <h1 style="color: red;text-align: center;">Invalid Hallticket</h1>
+<% }else { %>
+
 <div class="search">
     <form method="POST" action="/studentresults">
     <div class="row">
-        <input type="text" placeholder="Hall Ticket" name="htno" required>
-        <select name="yearsem" required>
-        <option value="" hidden>select year-sem</option>
+        <input type="text" placeholder="Hall Ticket" name="htno" value="<%= data[0].Roll_no %>" required>
+    <select name="yearsem" required>
+        <option hidden><%= data[0].YearSem %></option>
         <option value="1-1">1-1</option>
         <option value="1-2">1-2</option>
         <option value="2-1">2-1</option>
@@ -48,5 +73,65 @@
     </div>
 </form>
 </div>
+<h1 style="text-align: center;">Result</h1>
+<div class="details">
+    <div class="maindetails">
+        <div class="row">
+            <div class="col2">
+                <h3>Hall Ticket</h3> 
+                <h3>Branch </h3>
+                <h3>Secured Credits</h3>
+                <h3>SGPA</h3> 
+                <h3>Result Status</h3> 
+                <hr>
+            </div>
+            <div class="col2">
+                <h3><%=data[0].Roll_no %></h3>
+                <h3><%=data[0].Deptname %></h3>                
+                <% var sgpa=0.0 %>
+                <% var res ='T' %>
+                <% var sc = 0.0 %>
+                <% data.forEach((i)=>{ sgpa+=i.Gradepoint;sc+=i.Credits;if(i.Grade == 'F'){res='F'}}) %> 
+                <h3><%= sc %></h3>
+                 <h3><%= (sgpa/data.length).toFixed(2) %></h3>
+                 <h3><%= res %></h3>
+                <hr>
+            </div>
+        </div>
+    </div>
+<div class="individual">
+    <table>
+        <tr>
+            <th>Subject Code</th>
+            <th>Subject</th>
+            <th>Int_marks</th>
+            <th>Ext_marks</th>
+            <th>Total_marks</th>
+            <th>Credits</th>
+            <th>Grade Point</th>
+            <th>Grade</th>
+        </tr>
+       
+            <% if (data.length==0){ %>
+                <h1>Invalid Hallticket</h1>
+            <% } else { %>
+               <% data.forEach((i)=>{ %>
+                <tr>
+                <td><%= i.sub_code %></td>
+                <td><%= i.sub_name %></td> 
+                <td><%= i.Int_marks %></td>
+                <td><%= i.Ext_marks %></td>
+                <td><%= i.Total %></td>
+                <td><%= i.Credits %></td>
+                <td><%= i.Gradepoint %></td>
+                <td><%= i.Grade %></td>
+                </tr>
+                <% }) %>
+              <% } %>  
+        
+    </table>
+</div>
+</div>
+<% } %>
 </body>
 </html>

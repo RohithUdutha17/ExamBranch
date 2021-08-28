@@ -33,7 +33,7 @@
     <form method="POST" action="/studentseats">
     <div class="row">
             <div class="col2">
-                <input type="text" placeholder="Roll_no" name="rollno" required>
+                <input type="text" placeholder="Roll_no" name="rollno" value="<%= data.rn %>" required>
             </div>
             <div class="col2">
                 <button type="submit">Find seat</button>
@@ -41,6 +41,10 @@
     </div>
 </form>
 </div>
+</div>
+<div class="myseat">
+    <h1>Room_no : <%= data.room %></h1>
+    <h1>Dept_name : <%= data.dept %></h1>
 </div>
 </body>
 </html>

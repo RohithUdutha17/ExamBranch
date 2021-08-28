@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/fontawesome-free-5.15.3-web\css\all.css">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col3">
+                    <img src="/images/jntu.jpg" alt="">
+                </div>
+                <div class="col3">
+                    <h1>JAWAHARLAL  NEHRU  TECHNOLOGICAL  UNIVERSITY<br>HYDERABAD</h1>
+                </div>
+                <div class="col3">
+                    <a href=""><i class="fas fa-user"></i> Account</a>
+                </div> 
+            </div>
+        </div>
+    <div class="container">
+        <div class="smallcon">
+            <div class="row">
+                
+                <div class="col2">
+                    <img src="/images/exam.jpg" alt="">
+                </div>
+                <div class="col2">
+                    <div class="formcontainer">
+                        <span  onclick="login()"><a href="/login">Login</a></span>
+                        <span  onclick="register()"><a href="/register">Register</a></span>
+                        <hr id="indicator">
+                        <form id="register" method="POST" action="/login">
+                            <input type="number" placeholder="Examiner ID" name="ex_id" required>
+                            <input type="text" placeholder="Examiner name" name="ex_name" required>
+                            <input type="password" placeholder="password" name="password" required>
+                            <input type="text" placeholder="Role" name="role" required>
+                            <input type="number" placeholder="Mobile no" name="mobile_no" maxlength="10" required>
+                            <button type="submit">Register</button>
+                        </form >
+                        <form id="login" method="GET" action="/home">
+                            <input type="text" placeholder="Examiner_name" name="ex_name1">
+                            <input type="password" placeholder="password" name="password1">
+                            <button type="submit">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var Login = document.getElementById("login");
+    var Register = document.getElementById("register");
+    var indicator = document.getElementById("indicator");
+    function login(){
+        Register.style.transform = "translateX(310px)";
+        Login.style.transform = "translateX(310px)";
+        indicator.style.transform = "translateX(-60px)";
+    }
+    function register(){
+        Register.style.transform = "translateX(0px)";
+        Login.style.transform = "translateX(0px)";
+        indicator.style.transform = "translateX(60%)";
+    }
+</script>
+</body>
+</html>

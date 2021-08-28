@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/fontawesome-free-5.15.3-web\css\all.css">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="header">
+    <div class="container">
+        <div class="row">
+        <div class="col3">
+            <img src="/images/jntu.jpg" alt="">
+        </div>
+        <div class="col3">
+            <h1>JAWAHARLAL  NEHRU  TECHNOLOGICAL  UNIVERSITY <br> HYDERABAD</h1>
+
+        </div>
+        <div class="col3">
+            <a href="/home"><i class="fas fa-home"></i>Home</a>
+        </div>
+        <div class="col3">
+            <a href="account"><i class="fas fa-user"></i> Profile</a>
+        </div>
+    </div>
+</div>
+</div>
+<div class="seating">
+    <form method="POST" action="/home/seating">
+       <div class="adddel">
+        <button type="button" onclick="add()">Add Row</button>
+        <!-- <button type="button" onclick="delete1()">Delete Row</button> -->
+        </div>
+        <table>
+            <tr>
+                <th>From</th>
+                <th>To</th>
+                <th>Room_no</th>
+                <th>Dept_name</th>
+                <th>Invigilator</th>
+            </tr>
+            <tr id="jj">
+                <td id="row0"></td>
+                <td id="row1"></td>
+                <td id="row2"></td>
+                <td id="row3"></td>
+                <td id="row4"></td>
+            </tr>
+        </table>
+        <div class="push">
+            <button type="submit">POST</button>
+        </div>
+    </form>
+</div>
+<script>
+    var count=0;
+    function add(){
+        count+=1;
+
+        var values = ['from','to','room_no','dept_name','invigilator'];
+        for(let i=0;i<5;i++){
+            var input = document.createElement('input');
+        input.type='text';
+        input.required = true;
+        input.name=values[i];
+        console.log(input.name);
+            var p = 'row'+i;
+            console.log(p);
+            var d = document.getElementById(p);
+            d.appendChild(input);     
+        }
+    }
+    // function delete1(){
+    //     var values = ['from','to','room_no','dept_name','invigilator'];
+    //     for(let i=0;i<5;i++){
+        
+            
+    //         var p = 'row'+i+"["+i+"]";
+    //         console.log(p);
+    //         var l = document.getElementById(p);
+        
+    //         var d = document.getElementById("jj");
+    //         d[i].removeChild(l);
+    //     }
+
+    // }
+   
+</script>
+</body>
+</html>
